@@ -1,0 +1,40 @@
+esphome:
+  name: living-room-pm2-5
+  platform: ESP32
+  board: esp32dev
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+
+ota:
+
+wifi:
+  ssid: "wifi_hostname"
+  password: "wifi_password"
+  # Uncomment use_address if a static address is desired
+  #use_address: "192.168.0.240"
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "spare-ssid"
+    password: "spare-password"
+
+captive_portal:
+
+# Example configuration entry
+uart:
+  # this is based on my example. Check your pinout for the pin you wish to use. 
+  # for esp32, any digital pin can be used as the rx_pin and will be quite accurate as there is a hardware UART on it.
+  # for ESP8266 it will still work but it uses a software UART and is less accurate
+  rx_pin: 18
+  baud_rate: 9600
+
+sensor:
+  - platform: pm1006
+    pm_2_5:
+      # this is the name of your sensor that will show up in homeassistant
+      name: "PM 2.5µm - LR"
+
