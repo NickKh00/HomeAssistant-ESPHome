@@ -1,0 +1,50 @@
+esphome:
+  name: home
+  platform: ESP32
+  board: esp32doit-devkit-v1
+
+wifi:
+  ssid: "wifi_SSID"
+  password: "wifi_password"
+  # specify address ip to use
+  #use_address: "192.168.1.240"
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+
+# Enable update Over-The-Air
+ota:
+
+# Enable Bluetooth scanning for this ESP32
+esp32_ble_tracker:
+
+sensor:
+  - platform: atc_mithermometer
+    mac_address: YOUR_MAC_ADDRESS
+    temperature:
+      name: "Floating Temperature"
+    humidity:
+      name: "Floating Humidity"
+    battery_level:
+      name: "Floating Battery-Level"
+    battery_voltage:
+      name: "Floating Battery-Voltage"
+      
+  - platform: atc_mithermometer
+    mac_address: YOUR_MAC_ADDRESS
+    temperature:
+      name: "DT Temperature"
+    humidity:
+      name: "DT Humidity"
+    battery_level:
+      name: "DT Battery-Level"
+    battery_voltage:
+      name: "DT Battery-Voltage"
+
+# Show the status of ESP32
+binary_sensor:
+  - platform: status
+    name: "Mi BLE sensors Status"
